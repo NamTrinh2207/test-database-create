@@ -1,0 +1,80 @@
+create database student_managerment;
+use student_managerment;
+create table address(
+	id int primary key auto_increment,
+    address varchar(225) not null
+);
+create table class(
+	id int primary key auto_increment,
+    class_name varchar(225) not null,
+    class_language varchar(225) not null,
+    class_description varchar(225) not null
+);
+create table students(
+	id int primary key auto_increment,
+    fullname varchar(225) not null,
+    address_id int, foreign key (address_id) references address(id),
+    age int not null,
+    phone varchar(11) not null unique,
+    classes_id int, foreign key (classes_id) references class(id)
+);
+create table course(
+	id int primary key auto_increment,
+    course_name varchar(225) not null,
+    course_description varchar(225) not null
+);
+create table points(
+	id int primary key auto_increment,
+    course_id int, foreign key (course_id) references course(id) ,
+    students_id int, foreign key (students_id) references students(id),
+    points int not null
+);
+insert into address (id,address) values (id,"Thanh Hoa");
+insert into address (id,address) values (id,"Nam Đinh");
+insert into address (id,address) values (id,"Ha Nam");
+insert into address (id,address) values (id,"Ha Noi");
+insert into address (id,address) values (id,"Mong Cai");
+
+insert into class (id,class_name,class_language,class_description) values (id,"codeGym","java","OOP");
+insert into class (id,class_name,class_language,class_description) values (id,"codeGym1","java1","OOP1");
+insert into class (id,class_name,class_language,class_description) values (id,"codeGym2","java2","OOP2");
+insert into class (id,class_name,class_language,class_description) values (id,"codeGym3","java3","OOP3");
+insert into class (id,class_name,class_language,class_description) values (id,"codeGym4","java4","OOP4");
+
+insert into students (id,fullname,address_id,age,phone,classes_id) values (id,"Trinh Van Nam",1,18,"0369324197",1);
+insert into students (id,fullname,address_id,age,phone,classes_id) values (id,"Trinh Van Anh",2,19,"0369324198",3);
+insert into students (id,fullname,address_id,age,phone,classes_id) values (id,"Nguyen Van Nam",5,20,"0369324199",5);
+insert into students (id,fullname,address_id,age,phone,classes_id) values (id,"Nguyen Van Anh",2,21,"0369324191",4);
+insert into students (id,fullname,address_id,age,phone,classes_id) values (id,"Pham Van Hoang",1,22,"0369324192",2);
+insert into students (id,fullname,address_id,age,phone,classes_id) values (id,"Nguyen Van Nam",3,23,"0369324193",1);
+insert into students (id,fullname,address_id,age,phone,classes_id) values (id,"Pham Van Phuc",4,24,"0369324194",3);
+insert into students (id,fullname,address_id,age,phone,classes_id) values (id,"Nguyen Van Nam",5,25,"0369324195",4);
+insert into students (id,fullname,address_id,age,phone,classes_id) values (id,"Pham Van Duong",2,27,"0369324196",5);
+insert into students (id,fullname,address_id,age,phone,classes_id) values (id,"Trinh Van Nam",1,30,"0123456789",1);
+
+insert into course (id, course_name,course_description) values (id,"c1122","no");
+insert into course (id, course_name,course_description) values (id,"c1123","no");
+insert into course (id, course_name,course_description) values (id,"c1124","no");
+insert into course (id, course_name,course_description) values (id,"c1125","no");
+insert into course (id, course_name,course_description) values (id,"c1126","no");
+
+insert into points (id, course_id, students_id,points) values (id,1,12,59);
+insert into points (id, course_id, students_id,points) values (id,5,13,61);
+insert into points (id, course_id, students_id,points) values (id,3,14,75);
+insert into points (id, course_id, students_id,points) values (id,5,15,82);
+insert into points (id, course_id, students_id,points) values (id,2,16,95);
+insert into points (id, course_id, students_id,points) values (id,1,17,55);
+insert into points (id, course_id, students_id,points) values (id,3,18,71);
+insert into points (id, course_id, students_id,points) values (id,2,19,79);
+insert into points (id, course_id, students_id,points) values (id,1,20,83);
+insert into points (id, course_id, students_id,points) values (id,5,21,40);
+insert into points (id, course_id, students_id,points) values (id,2,15,65);
+insert into points (id, course_id, students_id,points) values (id,1,14,98);
+insert into points (id, course_id, students_id,points) values (id,3,18,100);
+insert into points (id, course_id, students_id,points) values (id,5,19,90);
+insert into points (id, course_id, students_id,points) values (id,1,13,91);
+
+select * from student_managerment.students where fullname like "Nguyen%";
+select * from student_managerment.students where fullname like "%Anh";
+select * from student_managerment.students where age in (18,19,20,21,22,23,24,25);
+select * from student_managerment.students where id = 12 or id = 13;
