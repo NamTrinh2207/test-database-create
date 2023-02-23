@@ -1,18 +1,21 @@
+# Tạo database
 create database student_managerment;
+# Sử dụng database
 use student_managerment;
+# Tạo table
 create table address(
 	id int primary key auto_increment,
-    address varchar(225) not null
+    address varchar(50) not null
 );
 create table class(
 	id int primary key auto_increment,
-    class_name varchar(225) not null,
-    class_language varchar(225) not null,
-    class_description varchar(225) not null
+    class_name varchar(25) not null,
+    class_language varchar(50) not null,
+    class_description varchar(100) not null
 );
 create table students(
 	id int primary key auto_increment,
-    fullname varchar(225) not null,
+    fullname varchar(25) not null,
     address_id int, foreign key (address_id) references address(id),
     age int not null,
     phone varchar(11) not null unique,
@@ -20,8 +23,8 @@ create table students(
 );
 create table course(
 	id int primary key auto_increment,
-    course_name varchar(225) not null,
-    course_description varchar(225) not null
+    course_name varchar(25) not null,
+    course_description varchar(50) not null
 );
 create table points(
 	id int primary key auto_increment,
@@ -29,19 +32,20 @@ create table points(
     students_id int, foreign key (students_id) references students(id),
     points int not null
 );
+# Thêm dữ liệu
 insert into address (id,address) values (id,"Thanh Hoa");
 insert into address (id,address) values (id,"Nam Đinh");
 insert into address (id,address) values (id,"Ha Nam");
 insert into address (id,address) values (id,"Ha Noi");
 insert into address (id,address) values (id,"Mong Cai");
 
-insert into class (id,class_name,class_language,class_description) values (id,"codeGym","java","OOP");
-insert into class (id,class_name,class_language,class_description) values (id,"codeGym1","java1","OOP1");
-insert into class (id,class_name,class_language,class_description) values (id,"codeGym2","java2","OOP2");
-insert into class (id,class_name,class_language,class_description) values (id,"codeGym3","java3","OOP3");
-insert into class (id,class_name,class_language,class_description) values (id,"codeGym4","java4","OOP4");
+insert into class (id,class_name,class_language,class_description) values (id,"codeGym Ha Noi","java","OOP");
+insert into class (id,class_name,class_language,class_description) values (id,"codeGym Sai Gon","java1","OOP1");
+insert into class (id,class_name,class_language,class_description) values (id,"codeGym Hue","java2","OOP2");
+insert into class (id,class_name,class_language,class_description) values (id,"codeGym Da Nang","java3","OOP3");
+insert into class (id,class_name,class_language,class_description) values (id,"codeGym Quang Tri","java4","OOP4");
 
-insert into students (id,fullname,address_id,age,phone,classes_id) values (id,"Trinh Van Nam",1,18,"0369324197",1);
+insert into students (id,fullname,address_id,age,phone,classes_id) values (12,"Trinh Van Nam",1,18,"0369324197",1);
 insert into students (id,fullname,address_id,age,phone,classes_id) values (id,"Trinh Van Anh",2,19,"0369324198",3);
 insert into students (id,fullname,address_id,age,phone,classes_id) values (id,"Nguyen Van Nam",5,20,"0369324199",5);
 insert into students (id,fullname,address_id,age,phone,classes_id) values (id,"Nguyen Van Anh",2,21,"0369324191",4);
@@ -52,29 +56,53 @@ insert into students (id,fullname,address_id,age,phone,classes_id) values (id,"N
 insert into students (id,fullname,address_id,age,phone,classes_id) values (id,"Pham Van Duong",2,27,"0369324196",5);
 insert into students (id,fullname,address_id,age,phone,classes_id) values (id,"Trinh Van Nam",1,30,"0123456789",1);
 
-insert into course (id, course_name,course_description) values (id,"c1122","no");
-insert into course (id, course_name,course_description) values (id,"c1123","no");
-insert into course (id, course_name,course_description) values (id,"c1124","no");
-insert into course (id, course_name,course_description) values (id,"c1125","no");
-insert into course (id, course_name,course_description) values (id,"c1126","no");
+insert into course (id, course_name,course_description) values (id,"c1122","description");
+insert into course (id, course_name,course_description) values (id,"c1123","description1");
+insert into course (id, course_name,course_description) values (id,"c1124","description2");
+insert into course (id, course_name,course_description) values (id,"c1125","description3");
+insert into course (id, course_name,course_description) values (id,"c1126","description4");
 
 insert into points (id, course_id, students_id,points) values (id,1,12,59);
 insert into points (id, course_id, students_id,points) values (id,5,13,61);
 insert into points (id, course_id, students_id,points) values (id,3,14,75);
 insert into points (id, course_id, students_id,points) values (id,5,15,82);
 insert into points (id, course_id, students_id,points) values (id,2,16,95);
-insert into points (id, course_id, students_id,points) values (id,1,17,55);
+insert into points (id, course_id, students_id,points) values (id,4,17,55);
 insert into points (id, course_id, students_id,points) values (id,3,18,71);
 insert into points (id, course_id, students_id,points) values (id,2,19,79);
 insert into points (id, course_id, students_id,points) values (id,1,20,83);
-insert into points (id, course_id, students_id,points) values (id,5,21,40);
+insert into points (id, course_id, students_id,points) values (id,2,20,40);
 insert into points (id, course_id, students_id,points) values (id,2,15,65);
 insert into points (id, course_id, students_id,points) values (id,1,14,98);
 insert into points (id, course_id, students_id,points) values (id,3,18,100);
 insert into points (id, course_id, students_id,points) values (id,5,19,90);
-insert into points (id, course_id, students_id,points) values (id,1,13,91);
+insert into points (id, course_id, students_id,points) values (id,4,13,91);
 
+# Tìm kiếm HV có họ Nguyen
 select * from student_managerment.students where fullname like "Nguyen%";
+# Tìm kiếm HV có tên Anh
 select * from student_managerment.students where fullname like "%Anh";
+# Tìm kiếm HV có độ tuổi từ 18-25
 select * from student_managerment.students where age in (18,19,20,21,22,23,24,25);
+# Tìm kiếm HV có id là 12 hoặc 13
 select * from student_managerment.students where id = 12 or id = 13;
+
+# Thống kê số lượng học viên các lớp
+select class.class_name, count(class_name) as 'Số sinh viên các lớp'
+from student_managerment.class, student_managerment.students
+where class.id = students.classes_id
+group by class_name;
+
+# Thống kê số lượng học viên tại các tỉnh
+select address.address, count(address) as "Học viên tại các tỉnh"
+from address,students
+where address.id = students.address_id
+group by address;
+
+# Tính điểm trung bình của các khóa học
+select course.course_name, avg(points) as "Điểm trung bình các khóa học"
+ from course, points
+ where course.id = points.course_id
+ group by course_name;
+
+# Đưa ra khóa học có điểm trung bình cao nhất
